@@ -1,6 +1,3 @@
-from email.base64mime import header_length
-
-
 class Soldier():
     def __init__(self, health, strength) -> None:
         self.health = health
@@ -12,19 +9,22 @@ class Soldier():
     def receiveDamage(self, damage):
         self.health = self.health - damage
 
-class Viking():
+class Viking(Soldier):
     def __init__(self, name, health, strength) -> None:
-        Soldier.__init__(self, health, strength)
+        super().__init__(health, strength)
         self.name = name
-    
-    Soldier.attack()
 
+    def attack(self):
+        return self.strength
+    
     def receiveDamage(self, damage):
         self.health = self.health - damage
-        if self.health <= 0:
-            return (self.name, ' has received ', damage, ' points of damage')
+        if self.health > 0:
+            sol = str(self.name) + ' has received ' + str(damage) + ' points of damage'
+            return sol
         else:
-            return (self.name, ' has died in act of combat')
+            sol = str(self.name) + ' has died in act of combat'
+            return sol
     
     def battleCry(self):
         return ('Odin Owns You All!')

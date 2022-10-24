@@ -9,5 +9,5 @@ class Soldier():
     def attack(self):
         return self.strength
     
-    def recieve_damage(self, damage):
+    def receiveDamage(self, damage):
         self.health = self.health - damage
